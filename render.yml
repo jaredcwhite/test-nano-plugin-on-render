@@ -1,0 +1,20 @@
+services:
+# Nano API backend
+- type: web
+  name: nano
+  env: ruby
+  buildCommand: bundle install
+  startCommand: bundle exec puma
+
+# Bridgetown static site
+- type: web
+  name: bridgetown
+  env: static
+  buildCommand: yarn deploy
+  staticPublishPath: ./output
+  envVars:
+  - key: NANO_API_URL
+    fromService:
+      name: nano
+      type: web
+      property: host
