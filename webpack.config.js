@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      NANO_API_URL: JSON.stringify(process.env.NANO_API_URL || "/backend")
+      NANO_API_URL: JSON.stringify(process.env.NANO_API_URL || "")
     }),
     new MiniCssExtractPlugin({
       filename: "../css/all.[contenthash].css",

@@ -1,20 +1,23 @@
 services:
 # Nano API backend
 - type: web
-  name: nano
+  name: test-nano-backend
   env: ruby
   buildCommand: bundle install
   startCommand: bundle exec puma
+  envVars:
+    - key: SECRET_KEY_BASE
+      value: c875f8c912c883ed8542ed9de6bb7836971e0c35d409ae4c2701c3f267d5019d8adfba56c466bc8616b039151379e81068c438d53600a17c532429c648df5b12
 
 # Bridgetown static site
 - type: web
-  name: bridgetown
+  name: test-nano-frontend
   env: static
   buildCommand: yarn deploy
   staticPublishPath: ./output
   envVars:
   - key: NANO_API_URL
     fromService:
-      name: nano
+      name: test-nano-backend
       type: web
       property: host
