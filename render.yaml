@@ -16,8 +16,6 @@ services:
   buildCommand: yarn deploy
   staticPublishPath: ./output
   envVars:
-  - key: NANO_API_PROTOCOL
-    value: "https://"
   - key: NANO_API_HOST
     fromService:
       name: test-nano-backend

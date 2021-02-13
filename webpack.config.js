@@ -3,6 +3,13 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 
+let apiURL = null
+if (process.env.NANO_API_HOST) {
+  apiURL = `https://${process.env.NANO_API_HOST}.onrender.com/backend`
+} else if (process.env.NANO_API_URL) {
+  apiURL = process.env.NANO_API_URL
+}
+
 module.exports = {
   entry: "./frontend/javascript/index.js",
   devtool: "source-map",
@@ -30,8 +37,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      NANO_API_PROTOCOL: JSON.stringify(process.env.NANO_API_PROTOCOL || ""),
-      NANO_API_HOST: JSON.stringify(process.env.NANO_API_HOST || "")
+      NANO_API_URL: JSON.stringify(apiURL || "/backend")
     }),
     new MiniCssExtractPlugin({
       filename: "../css/all.[contenthash].css",
