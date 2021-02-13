@@ -1,3 +1,4 @@
+previewsEnabled: true
 services:
 # Nano API backend
 - type: web
@@ -6,8 +7,10 @@ services:
   buildCommand: bundle install
   startCommand: bundle exec puma
   envVars:
-    - key: SECRET_KEY_BASE
-      value: c875f8c912c883ed8542ed9de6bb7836971e0c35d409ae4c2701c3f267d5019d8adfba56c466bc8616b039151379e81068c438d53600a17c532429c648df5b12
+  - key: RAILS_ENV
+    value: production
+  - key: SECRET_KEY_BASE
+    value: c875f8c912c883ed8542ed9de6bb7836971e0c35d409ae4c2701c3f267d5019d8adfba56c466bc8616b039151379e81068c438d53600a17c532429c648df5b12
 
 # Bridgetown static site
 - type: web
@@ -16,6 +19,8 @@ services:
   buildCommand: yarn deploy
   staticPublishPath: ./output
   envVars:
+  - key: BRIDGETOWN_ENV
+    value: production
   - key: NANO_API_HOST
     fromService:
       name: test-nano-backend
