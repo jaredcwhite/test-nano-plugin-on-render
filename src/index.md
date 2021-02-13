@@ -4,4 +4,4 @@
 layout: home
 ---
 
-Welcome to Bridgetown! Does this work?
+Welcome to Bridgetown! Welcome to Rails Nano!
