@@ -4,4 +4,4 @@
 layout: home
 ---
 
-Welcome to Bridgetown! Welcome to Rails Nano!
+Welcome to Bridgetown! Welcome to Rails Nano! Yippee!
